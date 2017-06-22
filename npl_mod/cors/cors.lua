@@ -1,4 +1,4 @@
-﻿
+﻿NPL.load('common');
 local cors = {};
 
 
@@ -10,7 +10,8 @@ local configureOrigin = function(req, res, cnf)
 		if(ty == 'string') then
 			res:setHeader('Access-Control-Allow-Origin', cnf.origin);
 			-- res:setHeader('Vary', 'Origin');
-		else
+		elseif(ty == 'table') then
+			res:setHeader('Access-Control-Allow-Origin', string.join(',', cnf.origin));
 			-- res:setHeader('Access-Control-Allow-Origin', 'false');
 			-- res:setHeader('Vary', 'Origin');
 		end
@@ -65,6 +66,8 @@ cors.handler = function(fn, cnf)
 			else
 				next(req, res, next);
 			end
+		else
+			next(req, res, next);
 		end
 	end;
 end

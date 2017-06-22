@@ -8,6 +8,6 @@
     "email": "me@caoyongfeng.com"
   },
   "dependencies": {
-
+    "common": "*"
   }
 }
