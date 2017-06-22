@@ -27,8 +27,9 @@ end));
 
 如果只传一个参数，并且是一个table，则是一个对跨域的相关配置，可支持的配置有：
 
-* **origin:** 域，可以是一个string，也可以是一个table（array）。
+* **origin:** 域，可以是一个string，也可以是一个table（array）。默认为 “\*” 。
 * **credentials:** 如果为 true，则会在 http 响应头中加入 Access-Control-Allow-Credentials=true
+* **methods:** HTTP request method，只有匹配的 method 才支持跨域，默认为 “GET,HEAD,PUT,PATCH,POST,DELETE”
 
 ```
 -- 对所有请求都支持跨域，并且只支持对来自域“google.com”的请求的跨域
