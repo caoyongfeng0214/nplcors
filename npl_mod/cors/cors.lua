@@ -60,6 +60,7 @@ cors.handler = function(fn, cnf)
 			configureOrigin(req, res, cnf);
 			configureCredentials(req, res, cnf);
 			configureMethods(req, res, cnf);
+			res:setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 			if(req.method == 'OPTIONS') then
 				res:setStatus(204);
 				res:send();
