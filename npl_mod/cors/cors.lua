@@ -20,9 +20,9 @@ end;
 
 
 local configureCredentials = function(req, res, cnf)
-	if(cnf.credentials) then
+	-- if(cnf.credentials) then
 		res:setHeader('Access-Control-Allow-Credentials', 'true');
-	end
+	-- end
 end
 
 
@@ -57,6 +57,9 @@ cors.handler = function(fn, cnf)
 			allow = fn(req, res);
 		end
 		if(allow) then
+			if(cnf.is_current_origin) then
+				cnf.origin = req.Origin;
+			end
 			configureOrigin(req, res, cnf);
 			configureCredentials(req, res, cnf);
 			configureMethods(req, res, cnf);
